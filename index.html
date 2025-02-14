@@ -12,10 +12,20 @@
             background-color: #f4f4f4;
             border: 1px solid #ddd;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+			transition: transform 0.3s ease-in-out;
+        }
+		.navbar {
+            background-color: #f8f9fa;
+			box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar-brand {
+            font-weight: bold;
         }
         .card:hover {
             background-color: #007BFF;
             color: white;
+			transform: translateY(-5px);
             cursor: pointer;
         }
         .card:hover .card-title {
@@ -83,7 +93,40 @@
             width: 0;
             animation: typing 3s steps(40, end) forwards;
         }
+		.google-form-container iframe {
+			height: 1520px; /* Default height for larger screens */
+			width: 640px;
+		}
+
+		@media (max-width: 425px) {
+			
+			.google-form-container iframe {
+				height: 1720px; /* Adjust only the iframe height for mobile */
+				width: 100%;
+			}
+		}
+  }
     </style>
+	
+	<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
+    const navbarCollapse = document.querySelector('.navbar-collapse');
+
+    navLinks.forEach(function (link) {
+      link.addEventListener('click', function () {
+        // Check if the menu is open
+        if (navbarCollapse.classList.contains('show')) {
+          const bsCollapse = new bootstrap.Collapse(navbarCollapse, {
+            toggle: false
+          });
+          bsCollapse.hide();
+        }
+      });
+    });
+  });
+</script>
+
 </head>
 <body>
     <header class="bg-primary text-white py-4">
@@ -98,7 +141,32 @@
         </div>
     </header>
 
-    <section class="container my-5">
+	<nav class="navbar navbar-expand-lg navbar-light sticky-top">
+        <div class="container">
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#services">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#getInTouch">Inquiry Form</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact Us</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+	
+    <section id="services" class="container my-5">
         <h2 class="text-center mb-4">Our Services</h2>
         <p class="text-center">We provide high-quality services at an affordable price to help businesses and startups grow efficiently.</p>
         <div class="row g-4">
@@ -161,20 +229,25 @@
         </div>
     </section>
 
-    <section class="container my-5">
+    <section id="about" class="container my-5">
         <div class="about-section text-center">
             <h2 class="mb-4">About Krishna API Hub</h2>
             <p>At Krishna API Hub, we provide robust, scalable, and secure backend solutions that support businesses and developers. Our expertise spans API development, performance optimization, automation, system maintenance, and web development. We prioritize seamless functionality, robust security, and high efficiency while keeping costs low, so you can focus on innovation without worrying about technical complexities</p>
         </div>
     </section>
-
+	<section id="getInTouch" class="container my-5 google-form-container" style="display: flex; justify-content: space-evenly;">
+		<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfCSQEyAFBDkEHKRXOmG9Q22HGi7MNQigc_rU34XzNidlvx3A/viewform?embedded=true"  height="1520" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+	</section>
+	
+	<section id="contact" class="container contact-section my-5 text-center">
+        <h2 class="mb-4">Contact Us</h2>
+        <p>Email: <a href="mailto:sushmat6699@gmail.com">sushmat6699@gmail.com</a></p>
+        <p>Follow us on <a href="https://www.instagram.com/krishna.api.hub/" target="_blank">Instagram</a></p>
+    </section>
+	
     <footer class="bg-dark text-white text-center py-4">
         <div class="container">
-            <p class="mb-2">© 2025 Krishna API HUB</p>
-            <div class="contact-section">
-                <p>Contact us: <a href="mailto:sushmat6699@gmail.com">sushmat6699@gmail.com</a></p>
-                <p>Follow us on <a href="https://www.instagram.com/krishna.api.hub/" target="_blank">Instagram</a></p>
-            </div>
+            <p class="mb-2">© 2025 Krishna API HUB. All Rights Reserved.</p>
         </div>
     </footer>
 
